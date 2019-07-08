@@ -30,6 +30,12 @@ public abstract class Unit implements UnitInterface{
     }
 
     @Override
+    public boolean equals(Object o) {
+        Unit u = (Unit)o;
+        return this.shortName.equals(u.shortName) && this.type == u.type;
+    }
+
+    @Override
     public String toString() {
         return fullName + " [" + shortName + "] is " + type + " unit";
     }
