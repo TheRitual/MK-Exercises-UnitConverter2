@@ -35,14 +35,27 @@ public class UnitConverter {
         }
 
         if(unitA.getType() == unitB.getType()) {
-            double factorA = getFactor(unitA);
-            double factorB = getFactor(unitB);
+            double valA, valB;
 
+            if(unitA.isSi()) {
+                SiUnit uniA = (SiUnit) unitA;
+                valA = uniA.getValue() * value;
+            } else {
+                ExternalUnit uniA = (ExternalUnit) unitA;
+                valA = value * uniA.getFactor();
+            }
 
+            if(unitB.isSi()) {
+                SiUnit uniB = (SiUnit) unitB;
+                valB = uniB.getValue() * valA;
+            } else {
+                ExternalUnit uniB = (ExternalUnit) unitB;
+                valB = valA / uniB.getFactor();
+            }
 
-            return 1;
+            return valB;
         } else {
-            System.out.println("Types missmatch." + unitA.fullName + " is " + unitA.getType() + " type " +
+            System.out.println("Types mismatch." + unitA.fullName + " is " + unitA.getType() + " type " +
                     "and " + unitB.fullName + " is " + unitB.getType() + " type");
             return 0;
         }
