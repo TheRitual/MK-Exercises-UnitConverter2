@@ -1,14 +1,18 @@
 package com.kodilla;
 
-public class SiUnit {
-    final private UnitType type;
-    final String fullName;
-    final String shortName;
-    final double value = 1;
+public class SiUnit extends Unit{
+    final private double value = 1;
 
     SiUnit(UnitType type, String fullName, String shortName) {
-        this.type = type;
-        this.fullName = fullName;
-        this.shortName = shortName;
+        super(type,fullName,shortName,true);
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return fullName + " [" + shortName + "] is " + type + " unit with default value " + value;
     }
 }

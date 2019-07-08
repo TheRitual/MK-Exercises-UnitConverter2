@@ -1,15 +1,36 @@
 package com.kodilla;
 
-public class Unit {
-    final private UnitType type;
-    final String fullName;
-    final String shortName;
-    final double factor;
+public abstract class Unit implements UnitInterface{
+    protected UnitType type;
+    protected String fullName;
+    protected String shortName;
+    protected boolean si;
 
-    Unit(UnitType type, String fullName, String shortName, double factor, double offset) {
+    Unit(UnitType type, String fullName, String shortName, boolean isSi) {
         this.type = type;
         this.fullName = fullName;
         this.shortName = shortName;
-        this.factor = factor;
+        this.si = isSi;
+    }
+
+    public UnitType getType() {
+        return type;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public boolean isSi(){
+        return this.si;
+    }
+
+    @Override
+    public String toString() {
+        return fullName + " [" + shortName + "] is " + type + " unit";
     }
 }
