@@ -1,18 +1,13 @@
 package com.kodilla;
-
-import javafx.scene.Parent;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class UnitConverter {
-    private List<SiUnit> siUnits;
-    private List<ExternalUnit> externalUnits;
+    private Set<SiUnit> siUnits;
+    private Set<ExternalUnit> externalUnits;
 
     UnitConverter(){
-        this.siUnits = new ArrayList<>();
-        this.externalUnits = new ArrayList<>();
+        this.siUnits = new HashSet<>();
+        this.externalUnits = new HashSet<>();
         this.siUnits.add(new SiUnit(UnitType.LENGTH,"meter","m"));
         this.siUnits.add(new SiUnit(UnitType.MASS,"kilogram","kg"));
         this.siUnits.add(new SiUnit(UnitType.TIME,"second","s"));
