@@ -16,6 +16,8 @@ public class UnitConverter {
     }
 
     public final double convert(Double value, String sUnitA, String sUnitB) {
+        sUnitA = sUnitA.toLowerCase();
+        sUnitB = sUnitB.toLowerCase();
         Unit unitA = getUnit(sUnitA);
         Unit unitB = getUnit(sUnitB);
 
@@ -69,17 +71,15 @@ public class UnitConverter {
 
     private Unit getUnit(String sUnit) {
         Unit unit = siUnits.stream()
-                .filter(siUnit -> siUnit.getShortName() == sUnit)
-                .findAny()
+                .filter(siUnit -> siUnit.getShortName().equals(sUnit))
+                .findFirst()
                 .orElse( null);
-
         if (unit == null){
             unit = externalUnits.stream()
-                    .filter(siUnit -> siUnit.getShortName() == sUnit)
-                    .findAny()
+                    .filter(siUnit -> siUnit.getShortName().equals(sUnit))
+                    .findFirst()
                     .orElse( null);
         }
-
         return unit;
     }
 

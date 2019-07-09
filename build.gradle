@@ -25,4 +25,15 @@ jar {
 
 }
 
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Unit Converter Jar',
+                'Implementation-Version': version,
+                'Main-Class': "com.kodilla.Main"
+    }
+    baseName = project.name + '-withLibs'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
 mainClassName = 'com.kodilla.Main'
