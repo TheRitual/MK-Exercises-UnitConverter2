@@ -52,7 +52,7 @@ public class UnitConverter {
 
             return valB;
         } else {
-            System.out.println("Types mismatch." + unitA.fullName + " is " + unitA.getType() + " type " +
+            System.out.println("Types mismatch ::: " + unitA.fullName + " is " + unitA.getType() + " type " +
                     "and " + unitB.fullName + " is " + unitB.getType() + " type");
             return 0;
         }
