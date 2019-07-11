@@ -39,7 +39,7 @@ public class UnitConverter {
                 valA = uniA.getValue() * value;
             } else {
                 ExternalUnit uniA = (ExternalUnit) unitA;
-                valA = value * uniA.getFactor();
+                valA = value * uniA.getFactor() + uniA.getOffset();
             }
 
             if(unitB.isSi()) {
@@ -47,7 +47,7 @@ public class UnitConverter {
                 valB = uniB.getValue() * valA;
             } else {
                 ExternalUnit uniB = (ExternalUnit) unitB;
-                valB = valA / uniB.getFactor();
+                valB = valA / uniB.getFactor() - uniB.getOffset();
             }
 
             return valB;
@@ -121,5 +121,10 @@ public class UnitConverter {
         this.addUnit(UnitType.TIME,"days","day",86400);
         this.addUnit(UnitType.TIME,"months","mo",2629743.83);
         this.addUnit(UnitType.TIME,"years","yr",31556926);
+    }
+
+    public HashSet getAllUnits() {
+        HashSet set = (HashSet)this.externalUnits;
+        return (HashSet) set.clone();
     }
 }
